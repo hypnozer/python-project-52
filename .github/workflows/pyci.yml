@@ -1,0 +1,26 @@
+name: Python CI
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.14'
+      - name: Install dependencies
+        run: |
+          pip install uv
+          make install
+      - name: Run linter and pytest
+        run: |
+          make check
+      - name: Run test coverage
+        run: |
+          make test-coverage
+
