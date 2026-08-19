@@ -1,4 +1,5 @@
 line-length = 80
+extend-exclude = ["migrations", "task_manager/settings.py"]
 
 [lint.per-file-ignores]
 "__init__.py" = ["F401"]
@@ -6,4 +7,3 @@ line-length = 80
 [lint]
 preview = true
 select = ["E", "F", "I", "C90"]
-

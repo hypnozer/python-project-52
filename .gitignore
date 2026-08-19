@@ -3,7 +3,9 @@ __pycache__
 dist/
 *.pyc
 .venv
+.env
 .coverage
 coverage.xml
 *_cache/
-
+db.sqlite3
+staticfiles/
