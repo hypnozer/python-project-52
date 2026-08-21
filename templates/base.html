@@ -15,6 +15,7 @@
           <a class="text-base text-gray-700 hover:text-gray-950" href="{% url 'users:index' %}">Пользователи</a>
           {% if user.is_authenticated %}
             <a class="text-base text-gray-700 hover:text-gray-950" href="{% url 'statuses:index' %}">Статусы</a>
+            <a class="text-base text-gray-700 hover:text-gray-950" href="{% url 'labels:index' %}">Метки</a>
             <a class="text-base text-gray-700 hover:text-gray-950" href="{% url 'tasks:index' %}">Задачи</a>
           {% endif %}
         </div>

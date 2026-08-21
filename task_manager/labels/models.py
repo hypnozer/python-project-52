@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.deletion import ProtectedError
 
 
 class Label(models.Model):
@@ -7,3 +8,8 @@ class Label(models.Model):
 
     def __str__(self):
         return self.name
+
+    def delete(self, *args, **kwargs):
+        if self.tasks.exists():
+            raise ProtectedError("Label is linked to tasks", [self])
+        return super().delete(*args, **kwargs)
