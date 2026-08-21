@@ -2,10 +2,11 @@ from django.contrib import admin
 from django.urls import include, path
 
 from task_manager.users.views import UserLoginView, UserLogoutView
-from task_manager.views import IndexView
+from task_manager.views import IndexView, trigger_error
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("sentry-debug/", trigger_error, name="sentry_debug"),
     path("", IndexView.as_view(), name="index"),
     path("users/", include("task_manager.users.urls")),
     path("statuses/", include("task_manager.statuses.urls")),
