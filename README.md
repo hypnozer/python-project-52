@@ -2,6 +2,7 @@
 
 [![Actions Status](https://github.com/hypnozer/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/hypnozer/python-project-52/actions)
 [![Python CI](https://github.com/hypnozer/python-project-52/actions/workflows/pyci.yml/badge.svg)](https://github.com/hypnozer/python-project-52/actions/workflows/pyci.yml)
+[![Quality gate status](https://sonarcloud.io/api/project_badges/measure?project=hypnozer_python-project-52&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=hypnozer_python-project-52)
 
 Task management web application built with Python and Django.
 
