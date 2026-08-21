@@ -41,6 +41,6 @@ The application is prepared for deployment on Render with PostgreSQL.
 
 - Build command: `make build`
 - Start command: `make render-start`
-- Required environment variables: `DATABASE_URL`, `SECRET_KEY`
+- Required environment variables: `DATABASE_URL`, `SECRET_KEY`, `SENTRY_DSN`
 
 Deployed application: [python-project-52-7e2p.onrender.com](https://python-project-52-7e2p.onrender.com/)
