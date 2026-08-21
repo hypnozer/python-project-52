@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} — Менеджер задач{% endblock %}
+
+{% block content %}
+  <h1 class="mb-6 text-3xl font-semibold text-gray-950">{{ title }}</h1>
+  <form class="max-w-md space-y-5 [&_input]:mt-1 [&_input]:block [&_input]:w-full [&_input]:rounded [&_input]:border-gray-400 [&_input]:px-3 [&_input]:py-2 [&_select]:mt-1 [&_select]:block [&_select]:w-full [&_select]:rounded [&_select]:border-gray-400 [&_textarea]:mt-1 [&_textarea]:block [&_textarea]:min-h-40 [&_textarea]:w-full [&_textarea]:rounded [&_textarea]:border-gray-400" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <div>
+        {{ field.label_tag }}
+        {% if field.errors %}
+          <div class="mt-1 text-sm text-red-700">{{ field.errors }}</div>
+        {% endif %}
+        {{ field }}
+      </div>
+    {% endfor %}
+    <button class="rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700" type="submit">{{ button_text }}</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,28 @@
+[
+  {
+    "model": "tasks.task",
+    "pk": 1,
+    "fields": {
+      "name": "Подготовить отчёт",
+      "description": "Собрать данные и подготовить итоговый отчёт.",
+      "status": 1,
+      "author": 1,
+      "executor": 2,
+      "labels": [1, 2],
+      "created_at": "2026-08-21T11:00:00Z"
+    }
+  },
+  {
+    "model": "tasks.task",
+    "pk": 2,
+    "fields": {
+      "name": "Проверить документацию",
+      "description": "Проверить актуальность раздела установки.",
+      "status": 2,
+      "author": 2,
+      "executor": null,
+      "labels": [],
+      "created_at": "2026-08-21T12:00:00Z"
+    }
+  }
+]

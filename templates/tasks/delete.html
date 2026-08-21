@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Удаление задачи — Менеджер задач{% endblock %}
+
+{% block content %}
+  <h1 class="mb-6 text-3xl font-semibold text-gray-950">Удаление задачи</h1>
+  <p class="mb-6 text-lg">Вы уверены, что хотите удалить {{ object.name }}?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button class="rounded bg-red-600 px-4 py-2 font-medium text-white hover:bg-red-700" type="submit">Да, удалить</button>
+  </form>
+{% endblock %}

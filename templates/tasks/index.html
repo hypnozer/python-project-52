@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Задачи — Менеджер задач{% endblock %}
+
+{% block content %}
+  <h1 class="mb-6 text-3xl font-semibold text-gray-950">Задачи</h1>
+  <a class="mb-5 inline-block rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700" href="{% url 'tasks:create' %}">Создать задачу</a>
+  <div class="overflow-x-auto">
+    <table class="w-full border-collapse text-left">
+      <thead>
+        <tr class="border-b border-gray-300">
+          <th class="px-3 py-3 font-semibold">ID</th>
+          <th class="px-3 py-3 font-semibold">Имя</th>
+          <th class="px-3 py-3 font-semibold">Статус</th>
+          <th class="px-3 py-3 font-semibold">Автор</th>
+          <th class="px-3 py-3 font-semibold">Исполнитель</th>
+          <th class="px-3 py-3 font-semibold">Дата создания</th>
+          <th class="px-3 py-3"><span class="sr-only">Действия</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in tasks %}
+          <tr class="even:bg-gray-50">
+            <td class="px-3 py-3 align-top">{{ task.id }}</td>
+            <td class="px-3 py-3 align-top">{{ task.name }}</td>
+            <td class="px-3 py-3 align-top">{{ task.status }}</td>
+            <td class="px-3 py-3 align-top">{{ task.author }}</td>
+            <td class="px-3 py-3 align-top">{{ task.executor|default_if_none:"" }}</td>
+            <td class="px-3 py-3 align-top">{{ task.created_at|date:"d.m.Y H:i" }}</td>
+            <td class="px-3 py-3 align-top">
+              <a class="block text-blue-600 hover:text-blue-800" href="{% url 'tasks:detail' task.pk %}">Показать</a>
+              <a class="block text-blue-600 hover:text-blue-800" href="{% url 'tasks:update' task.pk %}">Изменить</a>
+              <a class="block text-blue-600 hover:text-blue-800" href="{% url 'tasks:delete' task.pk %}">Удалить</a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td class="px-3 py-6 text-gray-500" colspan="7">Задач пока нет</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

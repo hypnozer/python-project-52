@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Просмотр задачи — Менеджер задач{% endblock %}
+
+{% block content %}
+  <h1 class="mb-6 text-3xl font-semibold text-gray-950">Просмотр задачи</h1>
+  <article class="overflow-hidden rounded border border-gray-200 bg-gray-50 shadow-sm">
+    <h2 class="bg-gray-700 px-5 py-3 text-2xl font-semibold text-white">{{ task.name }}</h2>
+    <div class="space-y-5 p-5">
+      <p>{{ task.description }}</p>
+      <dl class="grid gap-x-6 gap-y-2 sm:grid-cols-[10rem_1fr]">
+        <dt class="font-medium">Автор</dt>
+        <dd>{{ task.author }}</dd>
+        <dt class="font-medium">Исполнитель</dt>
+        <dd>{{ task.executor|default_if_none:"" }}</dd>
+        <dt class="font-medium">Статус</dt>
+        <dd>{{ task.status }}</dd>
+        <dt class="font-medium">Дата создания</dt>
+        <dd>{{ task.created_at|date:"d.m.Y H:i" }}</dd>
+      </dl>
+      <div>
+        <h3 class="font-medium">Метки:</h3>
+        <ul class="list-disc pl-6">
+          {% for label in task.labels.all %}
+            <li>{{ label }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="flex gap-4">
+        <a class="text-blue-600 hover:text-blue-800" href="{% url 'tasks:update' task.pk %}">Изменить</a>
+        <a class="text-blue-600 hover:text-blue-800" href="{% url 'tasks:delete' task.pk %}">Удалить</a>
+      </div>
+    </div>
+  </article>
+{% endblock %}
