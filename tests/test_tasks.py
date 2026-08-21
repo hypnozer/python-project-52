@@ -141,6 +141,8 @@ def test_task_creation_form_has_expected_fields(client, task_records):
         assert f'id="id_{field_name}"' in content
     for label in ("Имя", "Описание", "Статус", "Исполнитель", "Метки"):
         assert label in content
+    assert "Алиса Смирнова" in content
+    assert "Борис Иванов" in content
     assert 'name="author"' not in content
     assert ">Создать<" in content
 

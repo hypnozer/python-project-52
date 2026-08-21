@@ -60,6 +60,8 @@ def test_filter_form_has_expected_fields_and_labels(client, filter_records):
         assert f'id="id_{field_name}"' in content
     for label in ("Статус", "Исполнитель", "Метка", "Только свои задачи"):
         assert label in content
+    assert "Алиса Смирнова" in content
+    assert "Борис Иванов" in content
     assert ">Показать<" in content
 
 
