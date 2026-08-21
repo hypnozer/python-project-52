@@ -93,6 +93,7 @@ def test_authenticated_user_can_view_tasks(client, task_records):
     assert "Создать задачу" in content
     assert "Подготовить отчёт" in content
     assert "Проверить документацию" in content
+    assert ">Подготовить отчёт</a>" in content
     assert "Новый" in content
     assert "alice" in content
     assert "bob" in content
