@@ -12,11 +12,18 @@
       <nav class="mx-auto flex min-h-16 w-full max-w-4xl flex-wrap items-center justify-between gap-4 px-4 py-3 sm:px-6" aria-label="Основная навигация">
         <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
           <a class="text-xl font-bold text-gray-900 hover:text-gray-700" href="{% url 'index' %}">Менеджер задач</a>
-          <a class="text-base text-gray-700 hover:text-gray-950" href="/users/">Пользователи</a>
+          <a class="text-base text-gray-700 hover:text-gray-950" href="{% url 'users:index' %}">Пользователи</a>
         </div>
         <div class="flex items-center gap-5">
-          <a class="text-base text-gray-700 hover:text-gray-950" href="/login/">Вход</a>
-          <a class="text-base text-gray-700 hover:text-gray-950" href="/users/create/">Регистрация</a>
+          {% if user.is_authenticated %}
+            <form action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <button class="text-base text-gray-700 hover:text-gray-950" type="submit">Выход</button>
+            </form>
+          {% else %}
+            <a class="text-base text-gray-700 hover:text-gray-950" href="{% url 'login' %}">Вход</a>
+            <a class="text-base text-gray-700 hover:text-gray-950" href="{% url 'users:create' %}">Регистрация</a>
+          {% endif %}
         </div>
       </nav>
     </header>
@@ -24,7 +31,7 @@
       {% if messages %}
         <div class="mb-6 space-y-3">
           {% for message in messages %}
-            <div class="rounded border border-blue-200 bg-blue-50 px-4 py-3 text-blue-800" role="alert">
+            <div class="rounded border px-4 py-3 {% if message.tags == 'success' %}border-green-200 bg-green-50 text-green-800{% elif message.tags == 'error' %}border-red-200 bg-red-50 text-red-800{% else %}border-blue-200 bg-blue-50 text-blue-800{% endif %}" role="alert">
               {{ message }}
             </div>
           {% endfor %}

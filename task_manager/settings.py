@@ -32,6 +32,7 @@ if render_hostname:
 
 INSTALLED_APPS = [
     "django_tailwind_cli",
+    "task_manager.users",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -139,6 +140,8 @@ CSRF_COOKIE_SECURE = not DEBUG
 SECURE_HSTS_SECONDS = 3600 if not DEBUG else 0
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_URL = "login"
 
 LOGGING = {
     "version": 1,
