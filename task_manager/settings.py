@@ -31,6 +31,7 @@ if render_hostname:
     CSRF_TRUSTED_ORIGINS.append(f"https://{render_hostname}")
 
 INSTALLED_APPS = [
+    "django_tailwind_cli",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

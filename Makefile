@@ -22,6 +22,9 @@ dev:
 collectstatic:
 	uv run python manage.py collectstatic --no-input
 
+tailwind-build:
+	uv run python manage.py tailwind build
+
 migrate:
 	uv run python manage.py migrate
 
@@ -35,4 +38,4 @@ package-build:
 	uv build
 
 .PHONY: install update test test-coverage lint check dev collectstatic \
-	migrate render-start build package-build
+	tailwind-build migrate render-start build package-build

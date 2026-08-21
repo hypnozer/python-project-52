@@ -9,3 +9,4 @@ coverage.xml
 *_cache/
 db.sqlite3
 staticfiles/
+static/css/tailwind.css
