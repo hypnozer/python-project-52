@@ -32,6 +32,7 @@ if render_hostname:
 
 INSTALLED_APPS = [
     "django_tailwind_cli",
+    "django_filters",
     "task_manager.users",
     "task_manager.statuses",
     "task_manager.labels",

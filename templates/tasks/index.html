@@ -5,6 +5,27 @@
 {% block content %}
   <h1 class="mb-6 text-3xl font-semibold text-gray-950">Задачи</h1>
   <a class="mb-5 inline-block rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700" href="{% url 'tasks:create' %}">Создать задачу</a>
+  <form class="mb-6 grid gap-4 rounded border border-gray-200 bg-gray-50 p-4 sm:grid-cols-2 lg:grid-cols-4 [&_select]:mt-1 [&_select]:block [&_select]:w-full [&_select]:rounded [&_select]:border-gray-400 [&_select]:bg-white [&_select]:px-3 [&_select]:py-2 [&_select:focus]:border-blue-600 [&_select:focus]:ring-blue-600" method="get">
+    <div>
+      {{ filter.form.status.label_tag }}
+      {{ filter.form.status }}
+    </div>
+    <div>
+      {{ filter.form.executor.label_tag }}
+      {{ filter.form.executor }}
+    </div>
+    <div>
+      {{ filter.form.labels.label_tag }}
+      {{ filter.form.labels }}
+    </div>
+    <div class="flex items-end gap-4">
+      <label class="flex items-center gap-2 pb-2">
+        {{ filter.form.self_tasks }}
+        <span>{{ filter.form.self_tasks.label }}</span>
+      </label>
+      <button class="rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700" type="submit">Показать</button>
+    </div>
+  </form>
   <div class="overflow-x-auto">
     <table class="w-full border-collapse text-left">
       <thead>
