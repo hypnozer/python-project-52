@@ -43,4 +43,4 @@ The application is prepared for deployment on Render with PostgreSQL.
 - Start command: `make render-start`
 - Required environment variables: `DATABASE_URL`, `SECRET_KEY`
 
-The public application URL will be added after the Render service is created.
+Deployed application: [python-project-52-7e2p.onrender.com](https://python-project-52-7e2p.onrender.com/)
