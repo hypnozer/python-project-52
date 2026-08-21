@@ -104,6 +104,17 @@ def test_user_can_register(client):
     assert 'role="alert"' in content
 
 
+def test_user_can_register_with_password_similar_to_username(client):
+    data = registration_data(username="e2e-user-123")
+    data["password1"] = "e2e-user-123!"
+    data["password2"] = "e2e-user-123!"
+
+    response = client.post(reverse("users:create"), data)
+
+    assert response.status_code == 302
+    assert response.url == reverse("login")
+
+
 def test_duplicate_username_shows_validation_error(client, users):
     response = client.post(
         reverse("users:create"),
