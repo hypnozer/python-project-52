@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Статусы — Менеджер задач{% endblock %}
+
+{% block content %}
+  <h1 class="mb-6 text-3xl font-semibold text-gray-950">Статусы</h1>
+  <a class="mb-5 inline-block rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700" href="{% url 'statuses:create' %}">Создать статус</a>
+  <div class="overflow-x-auto">
+    <table class="w-full border-collapse text-left">
+      <thead>
+        <tr class="border-b border-gray-300">
+          <th class="px-3 py-3 font-semibold">ID</th>
+          <th class="px-3 py-3 font-semibold">Имя</th>
+          <th class="px-3 py-3 font-semibold">Дата создания</th>
+          <th class="px-3 py-3"><span class="sr-only">Действия</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for status in statuses %}
+          <tr class="even:bg-gray-50">
+            <td class="px-3 py-3 align-top">{{ status.id }}</td>
+            <td class="px-3 py-3 align-top">{{ status.name }}</td>
+            <td class="px-3 py-3 align-top">{{ status.created_at|date:"d.m.Y H:i" }}</td>
+            <td class="px-3 py-3 align-top">
+              <a class="block text-blue-600 hover:text-blue-800" href="{% url 'statuses:update' status.pk %}">Изменить</a>
+              <a class="block text-blue-600 hover:text-blue-800" href="{% url 'statuses:delete' status.pk %}">Удалить</a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td class="px-3 py-6 text-gray-500" colspan="4">Статусов пока нет</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
