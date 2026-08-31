@@ -1,6 +1,8 @@
 install:
 	uv sync
 
+setup: install
+
 update:
 	uv lock --upgrade
 	uv sync
@@ -37,5 +39,5 @@ build:
 package-build:
 	uv build
 
-.PHONY: install update test test-coverage lint check dev collectstatic \
+.PHONY: install setup update test test-coverage lint check dev collectstatic \
 	tailwind-build migrate render-start build package-build
