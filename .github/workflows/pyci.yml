@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
@@ -23,4 +25,15 @@ jobs:
       - name: Run test coverage
         run: |
           make test-coverage
-
+      - name: Run SonarQube scan
+        if: github.event_name == 'push'
+        uses: SonarSource/sonarqube-scan-action@v8.2.1
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=hypnozer
+            -Dsonar.projectKey=hypnozer_python-project-52
+            -Dsonar.sources=task_manager
+            -Dsonar.tests=tests
+            -Dsonar.python.coverage.reportPaths=coverage.xml
