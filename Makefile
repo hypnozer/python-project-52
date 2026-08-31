@@ -1,7 +1,7 @@
 install:
 	uv sync
 
-setup: install
+setup: install migrate
 
 update:
 	uv lock --upgrade
