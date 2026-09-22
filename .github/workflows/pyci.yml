@@ -27,7 +27,7 @@ jobs:
           make test-coverage
       - name: Run SonarQube scan
         if: github.event_name == 'push'
-        uses: SonarSource/sonarqube-scan-action@v8.2.1
+        uses: SonarSource/sonarqube-scan-action@v8.2.2
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
